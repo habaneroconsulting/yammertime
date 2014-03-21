@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--[if lte IE 8]><html class="ie ie-8"><![endif]-->
+<!--[if gte IE 9]><html class="ie"><![endif]-->
+<!--[if !IE]>--><html><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Yammertime</title>
+
+    <meta name="description" content="Yammertime is a continuous stream of messages from your Yammer feed">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+
+    <!--[if lte IE 8]>
+        <script src="scripts/vendor/html5shiv/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- build:css(.tmp/less) styles/styles.min.css -->
+        <link rel="stylesheet" href="styles/vendor/normalize.css">
+        <link rel="stylesheet" href="styles/vendor/responsive-gs-12col.css">
+        <link rel="stylesheet" href="styles/vendor/h5boilerplate.css">
+        <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body>
+    <div class="container">
+        <header class="header hidden">
+            <div class="row">
+                <div class="col span_7">
+                    <div class="logo">
+                        <img class="header-logo" src="images/yammertime.png">
+                    </div>
+                </div>
+                <nav class="col span_5">
+                    <ul>
+                        <li><a href="#" id="settings">Settings</a></li>
+                        <li><a href="#" id="logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="main" role="main">
+            <div class="landing hidden">
+                <div class="row">
+                    <div class="col">
+                        <div class="logo"><img src="images/yammertime.png"/></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="yam">
+                            <div class="blurb">
+                                <p>Yammertime is a continuous stream of messages on Yammer, the private social network for your company.</p>
+                                <p>To get started, sign in.</p>
+                                <div id="login-button"><span id="yammer-login"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col span_12">
+                    <div class="sticky hidden"></div>
+                </div>
+                <div class="col span_12">
+                    <div class="feed no-scrollbar"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="overlay hidden"></div>
+        <section class="row modal hidden expanded no-scrollbar">
+            <div class="post-expanded col span_6"></div>
+            <div class="replies-expanded">
+                <img src="images/spinner.gif" height="128" width="128" id="spinner" alt="loading" />
+            </div>
+            <div class="close-button">&#10006;</div>
+        </section>
+
+        <section class="settings modal hidden">
+            <h2>Settings</h2>
+
+            <form>
+                <fieldset>
+                    <ul class="settings-list">
+                        <li>
+                            <label for="network">Network:</label>
+                            <select name="network"></select>
+                        </li>
+
+                        <li>
+                            <label for="group">Group:</label>
+                            <select name="group"></select>
+                        </li>
+
+                        <li>
+                            <label for="topic">Topic:</label>
+                            <input type="text" name="topic" placeholder="e.g. teamwork"/>
+                        </li>
+
+                        <li>
+                            <label for="logoUrl">Logo:</label>
+                            <input type="text" name="logoUrl" value=""  placeholder="e.g. http://placehold.it/350x50" />
+                            <span class="instructions">Enter a custom logo URL. The image will be scaled to 50 px high.</span>
+                        </li>
+
+                        <li>
+                            <label for="color">Color:</label>
+                            <input type="text" name="color" placeholder="#0092bc" />
+                            <span class="instructions">Enter a HEX value for the background colour.</span>
+                            <!-- Potential HTML5 colorpicker. Hidden for now -->
+                            <!-- <input type="color" name="bgcolor" value="#ffffff" /> -->
+                        </li>
+
+                        <li>
+                            <label for="text-size">Text size:</label>
+                            <select name="text-size" id="text-size">
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                                <option value="xlarge">Extra Large</option>
+                            </select>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" name="tiled" id="tiled" value="tiled">
+                            <label for="tiled">Enable tiled view</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" name="truncate" id="truncate" value="truncate">
+                            <label for="truncate">Truncate long posts</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" name="yammer-links" id="yammer-links" value="yammer-links">
+                            <label for="yammer-links">Disable links to Yammer</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" name="show-sticky" id="show-sticky" value="show-sticky">
+                            <label for="show-sticky">Show sticky announcement</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" name="post-rotation" id="post-rotation" value="post-rotation">
+                            <label for="post-rotation">Rotate posts</label>
+                        </li>
+
+                        <li class="buttons">
+                            <button name="submit">Accept</button>
+                            <button name="cancel">Cancel</button>
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script data-app-id="KdaIIi5UfW3oiDCcEONJoA" src="https://assets.yammer.com/platform/yam.js"></script>
+
+        <!-- build:js(.tmp/uglify) scripts/vendor.min.js -->
+            <script src="scripts/vendor/handlebars/handlebars.js"></script>
+            <script src="scripts/vendor/jquery-cookie/jquery.cookie.js"></script>
+            <script src="scripts/vendor/jquery.truncator/jquery.truncator.js"></script>
+            <script src="scripts/vendor/moment/moment.js"></script>
+            <script src="scripts/vendor/respond/respond.src.js"></script>
+
+            <!-- Masonry depenencies -->
+            <script src="scripts/vendor/eventie/eventie.js"></script>
+            <script src="scripts/vendor/doc-ready/doc-ready.js"></script>
+            <script src="scripts/vendor/eventEmitter/EventEmitter.js"></script>
+            <script src="scripts/vendor/get-style-property/get-style-property.js"></script>
+            <script src="scripts/vendor/get-size/get-size.js"></script>
+            <script src="scripts/vendor/jquery-bridget/jquery.bridget.js"></script>
+            <script src="scripts/vendor/matches-selector/matches-selector.js"></script>
+            <script src="scripts/vendor/outlayer/item.js"></script>
+            <script src="scripts/vendor/outlayer/outlayer.js"></script>
+            <script src="scripts/vendor/masonry/masonry.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp/uglify) scripts/main.min.js -->
+            <script src="scripts/templates.js"></script>
+            <script src="scripts/constants.js"></script>
+            <script src="scripts/utilities.js"></script>
+            <script src="scripts/feed.js"></script>
+            <script src="scripts/settings.js"></script>
+            <script src="scripts/template_helpers.js"></script>
+            <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

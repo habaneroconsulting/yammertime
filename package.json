@@ -1,0 +1,38 @@
+{
+  "name": "yammertime",
+  "version": "1.0.0",
+  "author": "Habanero Consulting Group",
+  "contributors": [
+    {
+      "name": "Umar Bolatov",
+      "email": "ubolatov@habaneroconsulting.com",
+      "url": "http://habaneroconsulting.com"
+    },
+    {
+      "name": "Christopher Parsons",
+      "email": "cparsons@habaneroconsulting.com",
+      "url": "http://habaneroconsulting.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/habaneroconsulting/yammertime.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-handlebars": "~0.7.0",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-newer": "~0.7.0",
+    "grunt-shell": "~0.6.4",
+    "grunt-usemin": "~2.0.2",
+    "matchdep": "~0.3.0"
+  },
+  "license": "MIT"
+}
