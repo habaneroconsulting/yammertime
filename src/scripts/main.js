@@ -171,6 +171,7 @@
             bgColor      : '#455560',
             groupId      : '-1',
             olderReplies : 'false',
+            logoUrl      : '',
             postRotation : 'false',
             showSticky   : 'false',
             stickyDate   : 0,
