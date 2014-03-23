@@ -88,6 +88,22 @@
     }
 
 
+    // Read a page's GET URL variables and return them as an associative array.
+    function getUrlVars() {
+        var vars = [],
+        hash;
+
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+
     function idleEvent() {
         var idleTime = 0,
             $this = $(this);
@@ -147,21 +163,30 @@
         feed.loadNetworks(settings.addNetworks);
         feed.loadGroups(settings.addGroups);
 
+
+        var queryString = getUrlVars();
+
+        // Default settings
+        var settingsArgs = {
+            bgColor      : '#455560',
+            groupId      : '-1',
+            olderReplies : 'false',
+            postRotation : 'false',
+            showSticky   : 'false',
+            stickyDate   : 0,
+            textSize     : 'small',
+            truncate     : 'false',
+            tiled        : 'true',
+            yammerLinks  : 'false'
+        };
+
         // Set default settings
-        if (!settings.get(settingKeys.noDefaults)) {
-            var settingsArgs = {
-                bgColor      : '#455560',
-                groupId      : '-1',
-                olderReplies : 'false',
-                postRotation : 'false',
-                remove       : 'false',
-                showSticky   : 'false',
-                stickyDate   : 0,
-                textSize     : 'small',
-                truncate     : 'false',
-                tiled        : 'true',
-                yammerLinks  : 'false'
-            };
+        if (!settings.get(settingKeys.noDefaults) && !queryString[queryString[0]]) {
+            settings.set(settingsArgs);
+        } else if (queryString[queryString[0]]) {
+            for (var i = 0; i < queryString.length; i++) {
+                settingsArgs[queryString[i]] = queryString[queryString[i]];
+            }
 
             settings.set(settingsArgs);
         }
