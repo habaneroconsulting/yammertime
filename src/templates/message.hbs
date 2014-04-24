@@ -61,7 +61,7 @@
             {{/if}}
 
             <div class="metadata">
-                <span class="messageinfo">Posted <a {{link_helper}}="{{web_url}}" target="_blank" class="creationdate unformatted" data-time="{{created_at}}">{{created_at}}</a> in <a {{link_helper}}="{{group_url}}">{{group_name}}</a>
+                <span class="messageinfo">Posted <a {{link_helper}}="{{web_url}}" target="_blank" class="creationdate unformatted" data-time="{{created_at}}">{{created_at}}</a> {{#if group_name}}in <a {{link_helper}}="{{group_url}}">{{group_name}}{{/if}}</a>
                 </span>
             </div>
 
