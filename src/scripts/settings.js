@@ -41,9 +41,7 @@ Yt.Settings = Yt.Settings || {};
 
 
     function changeNetworkHandler() {
-        if (module.oauth && module.oauth.setAuthToken) {
-            oauth.setAuthToken(config.accessTokens[elements.network.val()]);
-        }
+        yam.platform.setAuthToken(config.accessTokens[elements.network.val()].token);
 
         feed.loadGroups(module.addGroups);
     }
