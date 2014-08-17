@@ -155,11 +155,6 @@
         settings.set(settingKeys.networkId, response.access_token.network_name);
 
         feed.loadTokens(config);
-
-        // Set the oauth 2 access token
-        oauth = yam.request.getAuthenticator();
-        oauth.setAuthToken(config.accessTokens[networkPermalink]);
-
         feed.loadNetworks(settings.addNetworks);
         feed.loadGroups(settings.addGroups);
 
