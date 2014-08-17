@@ -148,11 +148,11 @@
 
         bindEvents();
 
-        settings.set(settingKeys.networkPermalink, response.network.permalink);
+        settings.set(settingKeys.networkPermalink, response.access_token.network_permalink);
         var networkPermalink = settings.get(settingKeys.networkPermalink);
 
         //Set network setting right off the start
-        settings.set(settingKeys.networkId, response.network.name);
+        settings.set(settingKeys.networkId, response.access_token.network_name);
 
         feed.loadTokens(config);
 
@@ -740,7 +740,14 @@
             } else {
                 elements.landing.removeClass(classes.hidden);
 
-                yam.connect.loginButton('#yammer-login');
+                yam.connect.loginButton(
+                    '#yammer-login',
+                    function (response) {
+                        if (response.authResponse) {
+                            login(response);
+                        }
+                    }
+                );
             }
         });
     }
