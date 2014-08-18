@@ -84,4 +84,10 @@
         }
     });
 
+    //  Helper for returning a proper network name for the user url
+    Handlebars.registerHelper('user_network_helper', function() {
+        var networkName = settings.get(settingKeys.networkId);
+        return new Handlebars.SafeString(networkName);
+    });
+
 })(Handlebars);
