@@ -8,7 +8,9 @@ var mountFolder = function (connect, dir) {
 
 module.exports = function (grunt) {
 	// load all grunt tasks
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	require('load-grunt-config')(grunt, {
+		jitGrunt: true
+	});
 
 	// configurable paths
 	var config = {
@@ -286,13 +288,13 @@ module.exports = function (grunt) {
 		'copy:dist'
 	]);
 
-	grunt.registerTask('server', [
+	grunt.registerTask('serve', [
 		'build',
 		'connect:dist',
 		'watch'
 	]);
 
-	grunt.registerTask('prodserver', [
+	grunt.registerTask('prodserve', [
 		'prod',
 		'connect:prod'
 	]);
