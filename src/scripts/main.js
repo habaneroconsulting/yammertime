@@ -504,7 +504,7 @@
 
         settings.set(settingKeys.olderReplies, 'true');
 
-        feed.loadMessages('/api/v1/messages/in_thread/' + threadId + '?older_than=' + oldestId  + '&limit=' +  config.messageLimit, placeMessages);
+        feed.loadMessages('messages/in_thread/' + threadId + '.json?older_than=' + oldestId  + '&limit=' +  config.messageLimit, placeMessages);
     }
 
 
@@ -521,13 +521,13 @@
 
         if (groupId && util.isInt(groupId) && groupId != -1) {
             //  Load group feed
-            feed.loadMessages('/api/v1/messages/in_group/' + groupId + '?threaded=true&limit=' +  config.messageLimit, placeMessages);
+            feed.loadMessages('messages/in_group/' + groupId + '.json?threaded=true&limit=' +  config.messageLimit, placeMessages);
         } else if (topicId && util.isInt(topicId)) {
             //  Load topic feed
-            feed.loadMessages('/api/v1/messages/about_topic/' + topicId + '?threaded=true&limit=' +  config.messageLimit, placeMessages);
+            feed.loadMessages('messages/about_topic/' + topicId + '.json?threaded=true&limit=' +  config.messageLimit, placeMessages);
         } else {
             //  Load All Company/Network Feed
-            feed.loadMessages('/api/v1/messages?threaded=true&limit=' + config.messageLimit, placeMessages);
+            feed.loadMessages('messages.json?threaded=true&limit=' + config.messageLimit, placeMessages);
         }
     }
 
@@ -556,7 +556,7 @@
         settings.set(settingKeys.appendPostReplies, 'true');
         settings.set(settingKeys.modalPostAppend, 'true');
 
-        feed.loadMessages('/api/v1/messages/in_thread/' + threadId + '?limit=' +  config.messageLimit, placeMessages);
+        feed.loadMessages('messages/in_thread/' + threadId + '.json?limit=' +  config.messageLimit, placeMessages);
     }
 
 
@@ -575,7 +575,7 @@
             settings.set(settingKeys.appendPostReplies, 'true');
             settings.set(settingKeys.postId, postId);
 
-            feed.loadMessages('/api/v1/messages/in_thread/' + threadId, placeMessages);
+            feed.loadMessages('messages/in_thread/' + threadId + '.json', placeMessages);
         } else {
             clickedLink.parents('.yam').find('.reply').toggle();
             clickedLink.parents('.yam').find('.reply').remove();
@@ -651,13 +651,13 @@
 
             if (groupId && util.isInt(groupId) && groupId !== '-1') {
                 // Load group feed
-                feed.loadMessages('/api/v1/messages/in_group/' + groupId + '?threaded=true&newer_than=' +  config.lastMessageId, placeMessages);
+                feed.loadMessages('messages/in_group/' + groupId + '.json?threaded=true&newer_than=' +  config.lastMessageId, placeMessages);
             } else if (topicId && util.isInt(topicId)) {
                 // Load topic feed
-                feed.loadMessages('/api/v1/messages/about_topic/' + topicId + '?threaded=true&newer_than=' +  config.lastMessageId, placeMessages);
+                feed.loadMessages('messages/about_topic/' + topicId + '.json?threaded=true&newer_than=' +  config.lastMessageId, placeMessages);
             } else {
                 // Load All Company/Network feed
-                feed.loadMessages('/api/v1/messages?threaded=true&newer_than=' + config.lastMessageId, placeMessages);
+                feed.loadMessages('messages.json?threaded=true&newer_than=' + config.lastMessageId, placeMessages);
             }
         }
 

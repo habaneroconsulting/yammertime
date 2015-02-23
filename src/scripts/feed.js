@@ -10,7 +10,7 @@ Yt.Feed = Yt.Feed || {};
 
     module.getOrCreateTopicId = function (topicName, success, error) {
         yam.platform.request({
-            url: 'https://api.yammer.com/api/v1/topics',
+            url: 'topics.json',
             type: 'POST',
             data: 'name=' + topicName,
             success: success,
@@ -22,8 +22,11 @@ Yt.Feed = Yt.Feed || {};
     module.loadGroups = function (success) {
         // Load group options
         yam.platform.request({
-            url: 'https://api.yammer.com/api/v1/groups?mine=1',
+            url: 'groups.json',
             type: 'GET',
+            data: {
+                mine: '1'
+            },
             success: success,
             error: util.requestErrorHandler
         });
@@ -32,7 +35,7 @@ Yt.Feed = Yt.Feed || {};
 
     module.loadMessages = function (apiUrl, success) {
         yam.platform.request({
-            url: 'https://api.yammer.com' + apiUrl,
+            url: apiUrl,
             type: 'GET',
             success: success,
             error: util.requestErrorHandler
@@ -43,7 +46,7 @@ Yt.Feed = Yt.Feed || {};
     module.loadNetworks = function (success) {
         // Load network options
         yam.platform.request({
-            url: 'https://api.yammer.com/api/v1/networks/current',
+            url: 'networks/current.json',
             type: 'GET',
             success: success,
             error: util.requestErrorHandler
@@ -53,7 +56,7 @@ Yt.Feed = Yt.Feed || {};
 
     module.loadTokens = function (config) {
         yam.platform.request({
-            url: 'https://api.yammer.com/api/v1/oauth/tokens',
+            url: 'oauth/tokens.json',
             type: 'GET',
             success: function (msg) {
                 $.each(msg, function(index, item) {

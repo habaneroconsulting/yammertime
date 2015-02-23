@@ -10,7 +10,7 @@
 @black: #000;
 
 @slateGrey: #455560;
-@darkSoftGrey: #959EA3;
+@darkSoftGrey: darken(#959EA3, 10%);
 @darkSofterGrey: #E3E6E8;
 @darkGrey: #293339;
 
@@ -39,10 +39,6 @@ body {
     background-color: @slateGrey;
     color: @darkGrey;
     font-family: Helvetica, Arial, sans-serif;
-
-    &::-webkit-scrollbar {
-        background-color: @white;
-    }
 }
 
 a {
@@ -928,16 +924,4 @@ a {
             top: 0;
         }
     }
-}
-
-// Scrollbar styling
-::-webkit-scrollbar {
-    width: 16px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: transparent;
-
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
