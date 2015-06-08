@@ -8,6 +8,7 @@ var mountFolder = function (connect, dir) {
 
 module.exports = function (grunt) {
 	// load all grunt tasks
+	require('load-grunt-tasks')(grunt);
 	require('load-grunt-config')(grunt);
 
 	// configurable paths

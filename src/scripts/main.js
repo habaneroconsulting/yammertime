@@ -69,7 +69,7 @@
     function formatCreationDates() {
         $('.creationdate').each(function() {
             var datestr = $(this).data('time');
-            var timeAgo = moment(datestr).fromNow();
+            var timeAgo = moment(new Date(datestr)).fromNow();
             var newDateStr = ' ' + timeAgo;
 
             $(this).text(newDateStr);
@@ -631,13 +631,13 @@
         elements.container.addClass(classes.tiled_view);
 
         if ($('.feed .yam').length) {
-            elements.feed.masonry('reloadItems');
-
             elements.feed.masonry({
                 itemSelector: '.tile',
                 gutter: 20,
                 columnWidth: 355
             });
+
+            elements.feed.masonry('reloadItems');
         }
     }
 

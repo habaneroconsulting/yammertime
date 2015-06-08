@@ -13,6 +13,7 @@ Yt.Feed = Yt.Feed || {};
             url: 'topics.json',
             type: 'POST',
             data: 'name=' + topicName,
+            dataType: 'json',
             success: success,
             error: error
         });
@@ -24,6 +25,7 @@ Yt.Feed = Yt.Feed || {};
         yam.platform.request({
             url: 'groups.json',
             type: 'GET',
+            dataType: 'json',
             data: {
                 mine: '1'
             },
@@ -37,6 +39,7 @@ Yt.Feed = Yt.Feed || {};
         yam.platform.request({
             url: apiUrl,
             type: 'GET',
+            dataType: 'json',
             success: success,
             error: util.requestErrorHandler
         });
@@ -48,6 +51,7 @@ Yt.Feed = Yt.Feed || {};
         yam.platform.request({
             url: 'networks/current.json',
             type: 'GET',
+            dataType: 'json',
             success: success,
             error: util.requestErrorHandler
         });
@@ -58,6 +62,7 @@ Yt.Feed = Yt.Feed || {};
         yam.platform.request({
             url: 'oauth/tokens.json',
             type: 'GET',
+            dataType: 'json',
             success: function (msg) {
                 $.each(msg, function(index, item) {
                     if (!config.accessTokens[item.network_permalink]) {

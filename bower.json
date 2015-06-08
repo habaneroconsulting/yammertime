@@ -1,26 +1,29 @@
 {
   "name": "yammertime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/habaneroconsulting/yammertime",
   "description": "A visualization of Yammer updates and conversations, Yammertime pulls content from your Yammer feed and displays it in a clean and simple wall interface.",
   "main": "index.html",
   "license": "MIT",
-  "private": true,
   "dependencies": {
-    "handlebars": "~3.0.0",
-    "jquery": "~2.1.3",
-    "jquery-cookie": "~1.4.0",
+    "handlebars": "3.0.0",
+    "html5shiv": "3.7.0",
+    "jquery": "1.11.3",
+    "jquery-bridget": "1.0.1",
+    "jquery-cookie": "1.4.0",
     "jquery.truncator": "*",
-    "moment": "~2.5.1",
-    "respond": "~1.4.2",
-    "masonry": "~3.1.5",
-    "html5shiv": "~3.7.0",
-    "jquery-bridget": "~1.1.0"
+    "masonry": "3.1.5",
+    "moment": "2.10.3",
+    "respond": "1.4.2"
   },
   "install": {
     "path": "src/scripts/vendor",
     "sources": {
-      "jquery": "bower_components/jquery/dist/jquery.min.js"
+      "jquery": "bower_components/jquery/dist/jquery.min.js",
+      "outlayer": [
+        "bower_components/outlayer/item.js",
+        "bower_components/outlayer/outlayer.js"
+      ]
     }
   }
 }
