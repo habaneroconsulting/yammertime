@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 			},
 			js: {
 				files: ['<%= config.src %>/scripts/{,*/}*.js'],
-				tasks: ['newer:copy:js']
+				tasks: ['newer:copy:js', 'jshint']
 			},
 			hbs: {
 				files: ['<%= config.src %>/templates/{,*/}*.hbs'],
@@ -250,6 +250,14 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
+		jshint: {
+			files: ['<%= config.src %>/scripts/*.js'],
+			options: {
+				globals: {
+					jQuery: true
+				}
+			}
+		},
 		shell: {
 			bower: {
 				options: {
@@ -281,6 +289,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:dist',
 		'less:dist',
+		'jshint',
 		'handlebars:dist',
 		'copy:dist'
 	]);

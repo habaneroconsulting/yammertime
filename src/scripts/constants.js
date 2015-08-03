@@ -40,15 +40,34 @@ Yt.Constants = Yt.Constants || {};
 		updateCount: 0
 	};
 
+	// Default settings
+	module.defaultSettings = {
+        bgColor      : '#455560',
+        debug        : 'false',
+        groupId      : '-1',
+        olderReplies : 'false',
+        logoUrl      : '',
+        postRotation : 'false',
+        showSticky   : 'false',
+        stickyDate   : 0,
+        textSize     : 'small',
+        truncate     : 'false',
+        tiled        : 'true',
+        yammerLinks  : 'false'
+    };
+
 	module.settingKeys = {
 		appendPostReplies: 'appendPostReplies',
 		bgColor: 'bgColor',
+		debug: 'debug',
 		fullName: 'fullName',
 		groupId: 'groupId',
 		logoUrl: 'logoUrl',
 		modalPostAppend: 'modalPostAppend',
-		networkPermalink: 'networkPermalink',
 		networkId: 'networkId',
+		networkName: 'networkName',
+		networkPermalink: 'networkPermalink',
+		networkToken: 'networkToken',
 		noDefaults: 'noDefaults',
 		olderReplies: 'olderReplies',
 		postId: 'postId',

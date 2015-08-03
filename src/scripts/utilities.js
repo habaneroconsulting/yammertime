@@ -115,6 +115,19 @@ Yt.Util = Yt.Util || {};
         }
     };
 
+    /**
+     * console.log wrapper - will only log the first 2 arguments
+     */
+    module.log = function (msg1, msg2) {
+        if (!msg2) {
+            msg2 = "";
+        }
+
+        if (console && console.log) {
+            console.log(msg1, msg2);
+        }
+    };
+
 
     module.addTrim();
 
