@@ -14,7 +14,7 @@
 
             for (var i = 0; i < count; i++) {
                 if (i < count - 1) {
-                    text += this.liked_by.names[i].full_name
+                    text += this.liked_by.names[i].full_name;
 
                     if (i === count - 2 && this.liked_by.count < 4) {
                         text += ' ';
