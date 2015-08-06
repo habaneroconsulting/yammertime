@@ -1,8 +1,8 @@
 bower_components
-src/scripts/vendor
 node_modules
 dist
 prod
+src
 .tmp
 *.sublime-project
 *.sublime-workspace
