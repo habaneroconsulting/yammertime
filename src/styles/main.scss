@@ -679,7 +679,7 @@ a {
         .replies-expanded {
             font-size: 140%;
             height: 100%;
-            overflow-y: scroll;
+            overflow-y: auto;
             padding: 20px;
 
             h2 {
