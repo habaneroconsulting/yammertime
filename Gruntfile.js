@@ -21,27 +21,19 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		connect: {
 			options: {
-				port: 9000,
-				hostname: 'localhost'
+				open: true
 			},
 			dist: {
 				options: {
-					middleware: function (connect) {
-						return [
-							mountFolder(connect, config.dist)
-						];
-					},
-					open: true
+					base: '<%= config.dist %>',
+					hostname: 'localhost',
+					livereload: true,
+					port: 9000
 				}
 			},
-			prod: {
+			production: {
 				options: {
-					middleware: function (connect) {
-						return [
-							mountFolder(connect, config.prod)
-						];
-					},
-					open: true,
+					base: '<%= config.prod %>',
 					keepalive: true
 				}
 			}
