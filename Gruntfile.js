@@ -43,9 +43,9 @@ module.exports = function (grunt) {
 			options: {
 				livereload: true
 			},
-			less: {
-				files: ['<%= config.src %>/styles/{,*/}*.{css,less}'],
-				tasks: ['newer:less:dist']
+			sass: {
+				files: ['<%= config.src %>/styles/{,*/}*.{css,scss}'],
+				tasks: ['newer:sass:dist']
 			},
 			html: {
 				files: ['<%= config.src %>/*.html'],
