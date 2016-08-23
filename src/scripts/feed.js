@@ -496,7 +496,7 @@ Yt.Feed = Yt.Feed || {};
         // Reset feed
         config.lastMessageId = 0;
         config.oldLastMessageId = 0;
-        elements.feed.html('');
+        //elements.feed.html('');
         elements.sticky.html('');
 
         // Apply settings
@@ -517,7 +517,7 @@ Yt.Feed = Yt.Feed || {};
 
 
     module.tilePosts = function() {
-        var tiles = $('.feed > div');
+        var tiles = $('.feed .post');
 
         tiles.addClass(classes.tile);
 
@@ -543,9 +543,10 @@ Yt.Feed = Yt.Feed || {};
 
         if ($('.feed .yam').length) {
             elements.feed.masonry({
+                columnWidth: '.grid-sizer',
+                gutter: '.gutter-sizer',
                 itemSelector: '.tile',
-                gutter: 20,
-                columnWidth: 355
+                percentPosition: true
             });
 
             elements.feed.masonry('reloadItems');
