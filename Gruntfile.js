@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 					port: 9000
 				}
 			},
-			production: {
+			prod: {
 				options: {
 					base: '<%= config.prod %>',
 					keepalive: true
