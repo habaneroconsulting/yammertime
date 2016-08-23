@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 	var config = {
 		src: 'src',
 		dist: 'dist',
-		prod: 'prod'
+		prod: 'prod',
+		repo: 'https://github.com/habaneroconsulting/yammertime.git'
 	};
 
 	grunt.initConfig({
@@ -264,7 +265,9 @@ module.exports = function (grunt) {
 		},
 		uglify: {
 			options: {
-				preserveComments: 'some'
+				preserveComments: function (node, comment) {
+					return comment.value.charAt(0) === '!';
+				}
 			},
 			prod: {
 				files: [{
@@ -316,6 +319,22 @@ module.exports = function (grunt) {
 					post: []
 				}
 			}
+		},
+		'gh-pages': {
+			options: {
+				base: '<%= config.prod %>',
+				branch: 'gh-pages',
+				clone: '.tmp/deploy/repo',
+				repo: '<%= config.repo %>'
+			},
+			src: [
+				'**/*',
+				'!.tmp/**/*',
+				'!bower_components/**/*',
+				'!dist/**/*',
+				'!node_modules/**/*',
+				'!src/**/*'
+			]
 		}
 	});
 
@@ -354,6 +373,11 @@ module.exports = function (grunt) {
 		'cssmin',
 		'copy:prod',
 		'usemin'
+	]);
+
+	grunt.registerTask('deploy', [
+		'prod',
+		'gh-pages'
 	]);
 
 	grunt.registerTask('default', [
