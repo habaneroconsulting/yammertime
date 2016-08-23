@@ -173,7 +173,7 @@ a {
 
 // Feed styles
 .container.tiled-view {
-    max-width: 1920px;
+    max-width: 2560px;
 }
 
 .hide {
@@ -555,7 +555,7 @@ a {
 
 // Tiled view specific styles
 .tiled-view {
-    @include tile-widths(5);
+    @include tile-widths(6);
 
     .tile {
         height: 400px;
@@ -781,6 +781,12 @@ a {
 }
 
 // Styles for smaller screens
+@media screen and (max-width: 1920px) {
+    .tiled-view {
+        @include tile-widths(5);
+    }
+}
+
 @media screen and (max-width: 1600px) {
     .tile {
         margin-bottom: 15px;
