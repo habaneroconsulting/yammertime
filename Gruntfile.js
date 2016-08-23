@@ -110,7 +110,7 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		less: {
+		sass: {
 			dist: {
 				files: [
 					{
@@ -118,8 +118,8 @@ module.exports = function (grunt) {
 						cwd: '<%= config.src %>/styles/',
 						src: [
 							'**/*.css',
-							'**/*.less',
-							'!**/_*.less',
+							'**/*.scss',
+							'!**/_*.scss',
 							'!_**/*'
 						],
 						dest: '<%= config.dist %>/styles/',
@@ -134,15 +134,60 @@ module.exports = function (grunt) {
 						cwd: '<%= config.src %>/styles/',
 						src: [
 							'**/*.css',
-							'**/*.less',
-							'!**/_*.less',
+							'**/*.scss',
+							'!**/_*.scss',
 							'!_**/*'
 						],
-						dest: '.tmp/less/styles/',
+						dest: '.tmp/scss/styles/',
 						ext: '.css'
 					}
 				]
 			}
+		},
+		postcss: {
+			options: {
+				processors: [
+					require('pixrem')(),
+					require('autoprefixer')({ browsers: '> 1%' })
+				]
+			},
+			dist: {
+				options: {
+					map: true
+				},
+				files: [
+					{
+						expand: true,
+						cwd: '<%= config.build %>/styles/',
+						src: [
+							'**/*.css',
+							'!vendor/**/*.css'
+						],
+						dest: '<%= config.build %>/styles/',
+						ext: '.css'
+					}
+				]
+			},
+			prod: {
+				files: [
+					{
+						expand: true,
+						cwd: '.tmp/scss/styles/',
+						src: [
+							'**/*.css',
+							'!vendor/**/*.css'
+						],
+						dest: '.tmp/scss/styles/',
+						ext: '.css'
+					}
+				]
+			}
+		},
+		sasslint: {
+			options: {
+				configFile: './node_modules/habanero-code-style/scss/sasslint.yml',
+			},
+			target: ['<%= config.src %>/styles/\*.scss']
 		},
 		useminPrepare: {
 			html: '<%= config.src %>/*.html',
@@ -280,7 +325,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'clean:dist',
-		'less:dist',
+		'sass:dist',
+		'postcss:dist',
 		'jshint',
 		'handlebars:dist',
 		'copy:dist'
@@ -299,7 +345,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('prod', [
 		'clean:prod',
-		'less:prod',
+		'sass:prod',
+		'postcss:prod',
 		'handlebars:prod',
 		'uglify:prod',
 		'useminPrepare',
