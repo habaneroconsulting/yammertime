@@ -1,6 +1,6 @@
 {
   "name": "yammertime",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "homepage": "https://github.com/habaneroconsulting/yammertime",
   "description": "A visualization of Yammer updates and conversations, Yammertime pulls content from your Yammer feed and displays it in a clean and simple wall interface.",
   "main": "index.html",

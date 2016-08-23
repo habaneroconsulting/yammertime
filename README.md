@@ -1,10 +1,10 @@
-# Yammertime
+# Yammertime [![devDependency Status](https://david-dm.org/habaneroconsulting/yammertime/dev-status.svg)](https://david-dm.org/habaneroconsulting/yammertime#info=devDependencies) [![Build status](https://travis-ci.org/habaneroconsulting/yammertime.svg)](http://travis-ci.org/habaneroconsulting/yammertime)
 
 A visualization of Yammer updates and conversations, Yammertime pulls content from your Yammer feed and displays it in a clean and simple wall interface. It is originally forked from [ganeshtoday/yammerfall](https://github.com/ganeshtoday/yammerfall).
 
 Yammertime is released under the MIT License.
 
-Copyright (c) 2015 Ganesh Kumaraswamy, Umar Bolatov, Christopher Parsons.
+Copyright (c) 2016 Ganesh Kumaraswamy, Umar Bolatov, Christopher Parsons.
 
 ## Build Instructions
 
