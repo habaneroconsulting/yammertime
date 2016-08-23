@@ -306,10 +306,22 @@ module.exports = function (grunt) {
 				command: 'bower-installer'
 			}
 		},
-		usemin: {
-			html: ['<%= config.prod %>/{,*/}*.html'],
-			css: ['<%= config.prod %>/styles/{,*/}*.css'],
+		filerev: {
 			options: {
+				encoding: 'utf8',
+				algorithm: 'md5',
+				length: 8
+			},
+			production: {
+				src: '<%= config.prod %>/**/*.{js,css}'
+			}
+		},
+		usemin: {
+			options: {
+				assetsDirs: [
+					'<%= config.prod %>',
+					'<%= config.prod %>/images'
+				],
 				dirs: ['<%= config.prod %>'],
 				flow: {
 					steps: {
@@ -318,7 +330,10 @@ module.exports = function (grunt) {
 					},
 					post: []
 				}
-			}
+			},
+			html: ['<%= config.prod %>/**/*.html'],
+			css: ['<%= config.prod %>/styles/**/*.css'],
+			js: ['<%= config.prod %>/scripts/**/*.js'],
 		},
 		'gh-pages': {
 			options: {
@@ -372,6 +387,7 @@ module.exports = function (grunt) {
 		'concat',
 		'cssmin',
 		'copy:prod',
+		'filerev',
 		'usemin'
 	]);
 
