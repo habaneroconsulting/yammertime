@@ -28,15 +28,15 @@ $text-larger: 200%;
     $tile-width: ((100% - (($num-columns - 1) * $gutter)) / $num-columns);
 
     .#{$parent}.small {
-        width: $tile-width;
+        @if $num-columns == 1 { width: 100%; } @else { width: $tile-width; }
     }
 
     .#{$parent}.medium {
-        width: $tile-width * 2 + $gutter;
+        @if $num-columns == 1 { width: 100%; } @else { width: $tile-width * 2 + $gutter; }
     }
 
     .#{$parent}.large {
-        width: $tile-width * 2 + $gutter;
+        @if $num-columns == 1 { width: 100%; } @else { width: $tile-width * 2 + $gutter; }
     }
 
     // Masonry grid sizing classes
